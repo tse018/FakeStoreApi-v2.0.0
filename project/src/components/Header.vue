@@ -1,0 +1,109 @@
+<template>
+   <header class="header grid">
+      <Icons :icon="'hamburgerMenu'" @hamburgerMenu="toggleDetails" class="header__menu grid__item" />
+
+      <h1 class="header__title grid__item">
+         {{ title }}
+      </h1>
+
+      <SearchBar v-if="searchField" class="header__search-container grid__item" />
+
+      <Icons :icon="'searchBar'" @searchBar="searchMenu" class="header__search" />
+
+      <ul class="header__social-container grid__item">
+         <li class="header__social-element">
+            <Icons :icon="'facebook'" />
+         </li>
+
+         <li class="header__social-element">
+            <Icons :icon="'mail'" />
+         </li>
+
+         <li class="header__social-element">
+            <Icons :icon="'twitter'" />
+         </li>
+      </ul>
+
+      <div class="header__toggle-container grid__item">
+         <ToggleMode :mode="mode" @toggle="$emit('toggle')" class="header__toggle" />
+      </div>
+
+      <SideBar v-if="menuBar" />
+   </header>
+</template>
+
+<script>
+import SearchBar from "../components/SearchBar.vue";
+import SideBar from "../components/SideBar.vue";
+import Icons from "../components/Icons.vue";
+import ToggleMode from "../components/ToggleMode.vue";
+
+export default {
+   components: {
+      SideBar,
+      SearchBar,
+      Icons,
+      ToggleMode,
+   },
+
+   data() {
+      return {
+         title: "Fake Store API",
+         menuBar: false,
+         searchField: false,
+      };
+   },
+
+   methods: {
+      toggleDetails() {
+         this.menuBar = !this.menuBar;
+      },
+
+      searchMenu() {
+         this.searchField = !this.searchField;
+      },
+   },
+};
+</script>
+
+<style>
+.header {
+   position: sticky;
+   top: 10px;
+}
+
+.header__menu {
+   margin-top: 13px;
+}
+
+.header__title {
+   font-size: 40px;
+   font-style: italic;
+   grid-column: span 3;
+}
+
+.header__social-container {
+   grid-column: 11;
+   margin-top: 13px;
+}
+
+.header__social-element {
+   cursor: pointer;
+}
+
+.header__search {
+   grid-column: 8;
+   cursor: pointer;
+   margin-top: 40px;
+}
+
+.header__search-container {
+   grid-column: 5 / 8;
+   margin-top: 50px;
+}
+
+.header__toggle-container {
+   grid-column: 12;
+   margin-top: 13px;
+}
+</style>

@@ -1,3 +1,11 @@
+/* Dark Mode Theme */
+.dark {
+   width: 100vw;
+   background: #15202b;
+   color: white;
+   transition: background 0.4s ease-in-out;
+}
+
 .grid {
    width: 100%;
    margin-bottom: 40px;
@@ -32,7 +40,6 @@
 }
 
 .grid__item {
-   background: rgb(183, 183, 210);
    padding: 20px;
    min-height: 100px;
    text-align: center;
@@ -76,9 +83,6 @@
    background-color: rgb(244, 191, 239);
 }
 
-body {
-   padding: 10px;
-}
 
 span {
    display: inline;
