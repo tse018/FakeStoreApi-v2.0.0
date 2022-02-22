@@ -2,9 +2,11 @@
    <header class="header grid">
       <Icons :icon="'hamburgerMenu'" @hamburgerMenu="toggleDetails" class="header__menu grid__item" />
 
-      <h1 class="header__title grid__item">
-         {{ title }}
-      </h1>
+      <RouterLink :to="{ name: 'home' }" class="header__title-container grid__item">
+         <h1 class="header__title ">
+            {{ title }}
+         </h1>
+      </RouterLink>
 
       <SearchBar v-if="searchField" class="header__search-container grid__item" />
 
@@ -28,19 +30,19 @@
          <ToggleMode :mode="mode" @toggle="$emit('toggle')" class="header__toggle" />
       </div>
 
-      <SideBar v-if="menuBar" />
+      <Cart v-if="menuBar" />
    </header>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
-import SideBar from "../components/SideBar.vue";
+import Cart from "./Cart.vue";
 import Icons from "../components/Icons.vue";
 import ToggleMode from "../components/ToggleMode.vue";
 
 export default {
    components: {
-      SideBar,
+      Cart,
       SearchBar,
       Icons,
       ToggleMode,
@@ -76,10 +78,21 @@ export default {
    margin-top: 13px;
 }
 
+.header__title-container {
+   grid-column: span 3;
+   text-decoration-line: none;
+}
+
+.dark .header__title {
+   font-size: 40px;
+   font-style: italic;
+   color: white;
+}
+
 .header__title {
    font-size: 40px;
    font-style: italic;
-   grid-column: span 3;
+   color: black;
 }
 
 .header__social-container {

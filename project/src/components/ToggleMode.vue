@@ -38,6 +38,17 @@ export default {
    transition: 0.4s;
 }
 
+.dark .toggler:before {
+   position: absolute;
+   content: '';
+   height: 26px;
+   width: 26px;
+   left: 4px;
+   bottom: 4px;
+   background: 4;
+   transition: 0.4s;
+}
+
 .toggler:before {
    position: absolute;
    content: '';
@@ -50,10 +61,10 @@ export default {
 }
 
 input:checked + .toggler {
-   background: green;
+   background: red;
 }
 input:focus + toggler {
-   box-shadow: 0 0 2px green;
+   box-shadow: 0 0 20px red;
 }
 
 input:checked + .toggler:before {

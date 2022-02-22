@@ -6,10 +6,12 @@
 
       <div class="cart__item" v-for="(item, index) in cartItems">
          <span>
-            {{ item.name }}
+            {{ item.title  }}
          </span>
 
          <button class="cart__item-remove" @click="removeItem(index)">
+
+         <img :src="item.image" :alt="item.title" />
             X
          </button>
       </div>
@@ -20,7 +22,7 @@
 export default {
    computed: {
       cartItems() {
-         return this.$store.getters.getItems;
+         return this.$store.getters.getProducts;
       },
 
       itemCount() {
@@ -30,7 +32,7 @@ export default {
 
    methods: {
       removeItem(itemIndex) {
-         this.$store.commit('removeItem', itemIndex)
+         this.$store.commit('removeProduct', itemIndex)
       }
    }
 

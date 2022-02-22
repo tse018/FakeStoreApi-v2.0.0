@@ -28,15 +28,18 @@ export default {
 
 <style>
 .product {
-   margin-top: 60px;
+   margin-top: 30px;
    grid-template-columns: repeat(4, 1fr);
-   background-color: none;
 }
-.product__container {
-   background: transparent;
+
+.dark + .product {
+   margin-top: 30px;
+   grid-template-columns: repeat(4, 1fr);
+   background-color: black;
 }
+
 .product__image, img {
-   width: 300px;
+   width: 250px;
    height: 300px;
 }
 </style>

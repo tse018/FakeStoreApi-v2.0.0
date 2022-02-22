@@ -2,7 +2,6 @@
    <div :class="mode">
       <Header :mode="mode" @toggle="toggle" />
       <Announcement />
-      <ProductApiData />
    </div>
 
    <RouterView />

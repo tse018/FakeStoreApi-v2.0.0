@@ -2,7 +2,6 @@ export default {
    state() {
       return {
          products: [],
-         cart: [],
       };
    },
 
@@ -10,14 +9,6 @@ export default {
       setProducts(state, products) {
          state.products = products;
       },
-
-      addToCart(state, product) {
-         state.cart.push(product);
-      },
-
-      removeItem(state, itemIndex) {
-         state.cart.splice(itemIndex, 1);
-      }
    },
 
    actions: {
@@ -34,14 +25,6 @@ export default {
    getters: {
       products(state) {
          return state.products;
-      },
-
-      getItems(state) {
-         return state.cart;
-      },
-
-      getItemCount(state) {
-         return state.cart.length;
       },
    },
 };

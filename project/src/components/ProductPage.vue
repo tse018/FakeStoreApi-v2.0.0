@@ -2,7 +2,10 @@
    <div class="product__container" v-if="product">
       <img :src="product.image" />
          {{ product.title }}
-      <button @click="addProductToCart(product)">
+
+         {{ product.price }}
+
+      <button @click="addToCart(product)">
          Add To Cart 
       </button>
    </div>
@@ -10,7 +13,9 @@
 
 <script>
 export default {
-   props: ['id'],
+   props: {
+      id: { type: String },
+   },
 
    data() {
       return {
@@ -30,6 +35,12 @@ export default {
 
          this.product = results;
       },
+
+      addToCart(product) {
+         this.$store.commit('addProductToCart', product)
+         console.log('Hello World')
+      },
+
    },
 };
 </script>
@@ -58,9 +69,6 @@ export default {
    row-gap: 20px;
 }
 
-.product__item {
-   background-color: transparent;
-}
 
 img {
    width: 300px;
