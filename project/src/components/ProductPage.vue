@@ -30,10 +30,6 @@ export default {
 
          this.product = results;
       },
-
-      addProductToCart(product) {
-         this.$store.commit('addToCart', product)
-      },
    },
 };
 </script>
