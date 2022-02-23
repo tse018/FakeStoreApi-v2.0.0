@@ -2,7 +2,7 @@ export default {
    state() {
       return {
          announcement: {
-            message: `OUT NOW! Issue #123 “Dialogues on Recursive Colonialisms, Speculative Computation, and the Techno-social”`
+            message: `OUT NOW! FAKE STORE API”`
          },
       };
    },
