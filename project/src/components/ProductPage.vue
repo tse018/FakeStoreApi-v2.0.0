@@ -24,23 +24,21 @@ export default {
    },
 
    created() {
-      this.fetchStoreApi();
+      this.fetchProductApi();
    },
 
    methods: {
-      async fetchStoreApi() {
+      async fetchProductApi() {
          const url = `https://fakestoreapi.com/products/${this.id}`;
          const response = await fetch(url);
-         const results = await response.json();
+         const result = await response.json();
 
-         this.product = results;
+         this.product = result;
       },
 
       addToCart(product) {
          this.$store.commit('addProductToCart', product)
-         console.log('Hello World')
       },
-
    },
 };
 </script>

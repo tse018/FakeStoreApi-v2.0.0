@@ -9,19 +9,29 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-
 export default {
-   created() {
-      this.fetchAllProducts();
+   props: {
+      id: { type: String },
    },
 
-   computed: {
-      ...mapGetters(["products"]),
+   data() {
+      return {
+         products: [],
+      };
+   },
+
+   created() {
+      this.fetchStoreApi();
    },
 
    methods: {
-      ...mapActions(["fetchAllProducts"]),
+      async fetchStoreApi() {
+         const url = 'https://fakestoreapi.com/products/';
+         const response = await fetch(url);
+         const results = await response.json();
+
+         this.products = results;
+      },
    },
 };
 </script>
