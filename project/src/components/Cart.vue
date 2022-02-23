@@ -2,7 +2,7 @@
    <div class="cart">
       <div class="cart__head grid">
          <RouterLink :to="{ name: 'home' }" class="cart__home grid__item">
-               Continue Shopping
+            Continue Shopping
          </RouterLink> 
 
          <p class="cart__count grid__item">
@@ -22,9 +22,11 @@
                {{ item.title }}
             </span>
 
-            <p class="cart__price">Price: ${{ item.price }}</p>
+            <p class="cart__price">
+               Price: ${{ item.price }}
+            </p>
 
-            <button class="cart__remove" @click="removeItem(index)">
+            <button class="cart__remove" @click="removeItem(index)" :aria-label="'remove' + item.title + 'from cart'">
                Remove this product
             </button>
          </div>

@@ -1,6 +1,6 @@
 <template>
    <div class="product grid" v-if="product">
-      <RouterLink :to="{ name: 'home' }" class="product__home grid__item">
+      <RouterLink :to="{ name: 'home' }" class="product__home grid__item" aria-label="go back to shopping page">
          Keep shopping
       </RouterLink>
 
@@ -12,7 +12,7 @@
          </h2>
 
          <div class="product__link grid__item">
-            <button class="product__add grid__item" @click="addToCart(product)">
+            <button class="product__add grid__item" @click="addToCart(product)" :aria-label="'add to cart' product.title ">
                Buy for ${{ product.price }}
             </button>
          </div>
@@ -28,7 +28,7 @@
          </p>
       </div>  
 
-      <RouterLink :to="{ name: 'cart' }" class="product__cart grid__item">
+      <RouterLink :to="{ name: 'cart' }" class="product__cart grid__item" aria-label="go to cart page">
          Go to cart
       </RouterLink> 
    </div>

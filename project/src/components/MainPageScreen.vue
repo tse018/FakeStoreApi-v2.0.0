@@ -1,7 +1,7 @@
 <template>
    <div class="products grid">
       <div v-for="product in products" :key="product.id" class="products__container grid__item">
-         <RouterLink :to="{name: 'product', params: { id: product.id }}">
+         <RouterLink :to="{name: 'product', params: { id: product.id }}" :aria-label="product.title">
             <img :src="product.image" :alt="product.title" class="products__image" />
          </RouterLink>
       </div>
@@ -12,11 +12,13 @@
 export default {
    data() {
       return {
+         // api products in this array  
          products: [],
       };
    },
 
    created() {
+      // before vue creating want to fetch the api so it will be shown on the web page when loaded
       this.fetchStoreApi();
    },
 
@@ -24,8 +26,10 @@ export default {
       async fetchStoreApi() {
          const url = 'https://fakestoreapi.com/products/';
          const response = await fetch(url);
+         // fetch api data into json
          const results = await response.json();
 
+         //products will get the products data as json
          this.products = results;
       },
    },
