@@ -7,7 +7,7 @@ export default {
    },
 
    mutations: {
-      // controllers 
+      // controllers
       addProductToCart(state, product) {
          state.cart.push(product);
       },

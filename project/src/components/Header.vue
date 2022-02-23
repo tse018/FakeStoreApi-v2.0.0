@@ -1,7 +1,7 @@
 <template>
    <header class="header grid">
       <RouterLink :to="{ name: 'cart' }">
-         <Icons :icon="'hamburgerMenu'" class="header__menu grid__item" />
+         <Icons :icon="'cart'" class="header__menu grid__item" />
 
          <span class="header__item-count">
             {{ itemCount }}
@@ -35,7 +35,6 @@
       <div class="header__toggle-container grid__item">
          <ToggleMode :mode="mode" @toggle="$emit('toggle')" class="header__toggle" />
       </div>
-
    </header>
 </template>
 

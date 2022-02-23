@@ -12,7 +12,7 @@
          </h2>
 
          <div class="product__link grid__item">
-            <button class="product__add grid__item" @click="addToCart(product)" :aria-label="'add to cart' product.title ">
+            <button class="product__add grid__item" @click="addToCart(product)" :aria-label="product.title">
                Buy for ${{ product.price }}
             </button>
          </div>
