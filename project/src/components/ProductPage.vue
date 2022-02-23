@@ -1,5 +1,9 @@
 <template>
    <div class="product grid" v-if="product">
+      <RouterLink :to="{ name: 'home' }" class="product__home grid__item">
+         Keep shopping
+      </RouterLink>
+
       <div class="product__container grid__item">
          <img :src="product.image" :alt="product.title" class="product__image grid__item" />
          
@@ -8,9 +12,9 @@
          </h2>
 
          <div class="product__link grid__item">
-            <RouterLink :to="{ name: 'home' }" class="product__home grid__item">
-               Continue Shopping
-            </RouterLink> 
+            <button class="product__add grid__item" @click="addToCart(product)">
+               Buy for ${{ product.price }}
+            </button>
          </div>
       </div>
 
@@ -22,11 +26,11 @@
          <p class="product__description grid__item">
             {{ product.description }}
          </p>
-
-         <button class="product__add grid__item" @click="addToCart(product)">
-            Buy for ${{ product.price }}
-         </button>
       </div>  
+
+      <RouterLink :to="{ name: 'cart' }" class="product__cart grid__item">
+         Go to cart
+      </RouterLink> 
    </div>
 </template>
 
@@ -75,15 +79,24 @@ export default {
    margin-top: 50px;
 }
 
+.product__home {
+   grid-column: 1 / 3;
+   text-decoration: none;
+   color: red;
+   font-style: italic;
+   font-size: 26px;
+}
+
 .product__container {
    grid-column: 5 / 8;
 }
 
-.product__home {
+.product__cart {
+   grid-column: span 2;
    text-decoration: none;
-   color: black;
+   color: green;
    font-style: italic;
-   background-color: whitesmoke;
+   font-size: 26px;
 }
 
 .product__image {
@@ -99,8 +112,8 @@ export default {
 .product__detail-title {
    font-size: 30px;
 }
-
 .product__add {
+   margin-top: -35px;
    color: black;
    background: white;
    width: 150px;
@@ -109,10 +122,6 @@ export default {
 }
 
 .product__add:hover {
-   background-color: bisque;
-}
-
-.product__home:hover {
    background-color: bisque;
 }
 </style>

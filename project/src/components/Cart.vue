@@ -88,6 +88,7 @@ export default {
    color:red;
    font-style: italic;
    font-size: 26px;
+   cursor: pointer;
 }
 
 .cart__information {
