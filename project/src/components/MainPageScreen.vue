@@ -56,5 +56,24 @@ export default {
    width: 200px;
    height: 300px;
 }
+
+/* Tablet screen */
+@media screen and (max-width: 1200px) {
+   .products {
+      margin-top: 50px;
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+/* Mobile screen */
+@media screen and (max-width: 600px) {
+   .products {
+      margin-top: 50px;
+      grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+
+
 </style>
 

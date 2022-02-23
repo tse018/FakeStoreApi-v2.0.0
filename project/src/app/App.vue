@@ -3,6 +3,7 @@
       <Header :mode="mode" @toggle="toggle" />
       <Announcement />
    </div>
+
    <RouterView />
 </template>
 
