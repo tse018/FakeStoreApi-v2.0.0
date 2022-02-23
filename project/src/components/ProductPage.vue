@@ -1,6 +1,5 @@
 <template>
    <div class="product grid" v-if="product">
-
       <div class="product__container grid__item">
          <img :src="product.image" :alt="product.title" class="product__image grid__item" />
          
@@ -110,6 +109,10 @@ export default {
 }
 
 .product__add:hover {
+   background-color: bisque;
+}
+
+.product__home:hover {
    background-color: bisque;
 }
 </style>

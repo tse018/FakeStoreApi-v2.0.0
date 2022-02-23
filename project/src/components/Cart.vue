@@ -1,6 +1,18 @@
 <template>
    <div class="cart">
-      <p class="cart__count grid__item">You have {{ itemCount }} item in your cart</p>
+      <div class="cart__head grid">
+         <RouterLink :to="{ name: 'home' }" class="cart__home grid__item">
+               Continue Shopping
+         </RouterLink> 
+
+         <p class="cart__count grid__item">
+            You have {{ itemCount }} item in your cart
+         </p>
+
+         <p class="cart__checkout grid__item">
+            Checkout
+         </p>
+      </div>
 
       <div class="cart__container grid" v-for="(item, index) in cartItems">
          <img class="cart__image grid__item" :src="item.image" :alt="item.title" />
@@ -10,11 +22,9 @@
                {{ item.title }}
             </span>
 
-            <p class="cart__price">
-               Price: ${{ item.price }}
-            </p>
+            <p class="cart__price">Price: ${{ item.price }}</p>
 
-            <button class="cart__remove " @click="removeItem(index)">
+            <button class="cart__remove" @click="removeItem(index)">
                Remove this product
             </button>
          </div>
@@ -46,17 +56,38 @@ export default {
 .cart {
    position: relative;
    top: 50px;
-   height: 100vh;
-   width: 100vw;
+   min-height: 100vh;
+   min-width: 100vw;
 }
 
 .dark + .cart {
    position: relative;
    top: 50px;
-   height: 100vh;
-   width: 100vw;
+   min-height: 100vh;
+   min-width: 100vw;
    background: #15202b;
    color: white;
+}
+
+.cart__home {
+   grid-column: 1 / 4;
+   text-decoration: none;
+   color:red;
+   font-style: italic;
+   font-size: 26px;
+}
+
+.cart__count {
+   grid-column: 6 / 9;
+   font-style: italic;
+   font-size: 26px;
+}
+
+.cart__checkout {
+   grid-column: 12;
+   color:red;
+   font-style: italic;
+   font-size: 26px;
 }
 
 .cart__information {
