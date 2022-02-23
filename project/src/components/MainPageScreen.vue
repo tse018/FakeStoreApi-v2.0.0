@@ -10,10 +10,6 @@
 
 <script>
 export default {
-   props: {
-      id: { type: String },
-   },
-
    data() {
       return {
          products: [],

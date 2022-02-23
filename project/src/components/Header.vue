@@ -2,6 +2,10 @@
    <header class="header grid">
       <RouterLink :to="{ name: 'cart' }">
          <Icons :icon="'hamburgerMenu'" class="header__menu grid__item" />
+
+         <span class="header__item-count">
+            {{ itemCount }}
+         </span>
       </RouterLink>
 
       <RouterLink :to="{ name: 'home' }" class="header__title-container grid__item">
@@ -57,6 +61,12 @@ export default {
       };
    },
 
+   computed: {
+      itemCount() {
+         return this.$store.getters.getItemCount;
+      },
+   },
+
    methods: {
       toggleDetails() {
          this.menuBar = !this.menuBar;
@@ -78,6 +88,14 @@ export default {
 .header__menu {
    margin-top: 13px;
    cursor: pointer;
+}
+
+.header__item-count {
+   position: absolute;
+   top: 3;
+   left: 70;
+   font-size: 40px;
+   color: red;
 }
 
 .header__title-container {

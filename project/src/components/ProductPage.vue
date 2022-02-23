@@ -20,7 +20,7 @@
 
       <div class="product__detail-container grid__item">
          <h2 class="product__detail-title">
-            {{ details }}
+            Product Details
          </h2>
 
          <p class="product__description grid__item">
@@ -37,29 +37,33 @@
 <script>
 export default {
    props: {
+      // getting route id params
       id: { type: String },
    },
 
    data() {
       return {
-         product: [],
-         details: 'Product Description',
+         // fetching items from API in here
+         product: [], 
       };
    },
 
    created() {
+       // before vue creating want to fetch the api so it will be shown 
       this.fetchProductApi();
    },
 
    methods: {
       async fetchProductApi() {
-         const url = `https://fakestoreapi.com/products/${this.id}`;
+         // litteral string the url endpoint to match params id from routes
+         const url = `https://fakestoreapi.com/products/${this.id}`; //
          const response = await fetch(url);
          const result = await response.json();
 
+         // storing all the api data as json in empty array
          this.product = result;
       },
-
+      
       addToCart(product) {
          this.$store.commit('addProductToCart', product)
       },

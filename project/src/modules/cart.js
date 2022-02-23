@@ -1,6 +1,7 @@
 export default {
    state() {
       return {
+         // keeping track of shopping cart
          cart: [],
       };
    },
