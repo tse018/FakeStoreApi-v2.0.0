@@ -81,15 +81,15 @@ export default {
    .product__image {
       order: 4;
       grid-column: 6;
-      margin-top: -100px;
       width: 500px;
       height: 500px;
+      margin-top: -100px;
    }
 
    .product__title {
-      order: 3;
+      order: 1;
       grid-column: 6;
-      margin-top: -150px;
+      margin-top: -30px;
    }
 
    .product__detail {
