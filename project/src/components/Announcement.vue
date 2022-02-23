@@ -5,7 +5,7 @@
             {{ text }}
          </span>
       </div>
-   </div> -->
+   </div>
 </template>
 
 <script>
@@ -38,7 +38,7 @@
       right: 0;
       top: 50px;
       bottom: 0;
-      height: 3.5em;
+      height: 2.5em;
       width: 100%;
       background: white;
       color: black;

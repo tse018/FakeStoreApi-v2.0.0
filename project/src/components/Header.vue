@@ -1,6 +1,8 @@
 <template>
    <header class="header grid">
-      <Icons :icon="'hamburgerMenu'" @hamburgerMenu="toggleDetails" class="header__menu grid__item" />
+      <RouterLink :to="{ name: 'cart' }">
+         <Icons :icon="'hamburgerMenu'" class="header__menu grid__item" />
+      </RouterLink>
 
       <RouterLink :to="{ name: 'home' }" class="header__title-container grid__item">
          <h1 class="header__title ">
@@ -30,7 +32,6 @@
          <ToggleMode :mode="mode" @toggle="$emit('toggle')" class="header__toggle" />
       </div>
 
-      <Cart v-if="menuBar" />
    </header>
 </template>
 
@@ -76,6 +77,7 @@ export default {
 
 .header__menu {
    margin-top: 13px;
+   cursor: pointer;
 }
 
 .header__title-container {

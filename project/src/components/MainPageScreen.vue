@@ -1,8 +1,8 @@
 <template>
-   <div class="product grid">
-      <div v-for="product in products" :key="product.id" class="product__container grid__item">
+   <div class="products grid">
+      <div v-for="product in products" :key="product.id" class="products__container grid__item">
          <RouterLink :to="{name: 'product', params: { id: product.id }}">
-            <img :src="product.image" :alt="product.title" class="product__image" />
+            <img :src="product.image" :alt="product.title" class="products__image" />
          </RouterLink>
       </div>
    </div>
@@ -36,20 +36,24 @@ export default {
 };
 </script>
 
-<style>
-.product {
-   margin-top: 30px;
+<style scoped>
+.products {
+   margin-top: 50px;
    grid-template-columns: repeat(4, 1fr);
 }
 
-.dark + .product {
-   margin-top: 30px;
+.dark + .products {
+   padding-top: 30px;
    grid-template-columns: repeat(4, 1fr);
    background-color: black;
 }
 
-.product__image, img {
-   width: 250px;
+.products__container:hover {
+   padding: 50px;
+}
+
+.products__image, img {
+   width: 200px;
    height: 300px;
 }
 </style>

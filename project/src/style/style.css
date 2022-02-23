@@ -1,6 +1,5 @@
 /* Dark Mode Theme */
 .dark {
-   min-width: 100vw;
    background: #15202b;
    color: white;
    transition: background 0.4s ease-in-out;
