@@ -14,6 +14,15 @@
          </h1>
       </RouterLink>
 
+      <RouterLink :to="{ name: 'home' }" class="header__home grid__item" aria-label="go to cart page">
+         Go back to Home
+      </RouterLink>
+
+      <RouterLink :to="{ name: 'cart' }" class="header__cart grid__item" aria-label="go to cart page">
+         Go to cart
+      </RouterLink>
+
+
       <SearchBar v-if="searchField" class="header__search-container grid__item" />
 
       <Icons :icon="'searchBar'" @searchBar="searchMenu" class="header__search" />
@@ -112,6 +121,23 @@ export default {
    font-size: 40px;
    font-style: italic;
    color: black;
+}
+
+
+.header__home {
+   position: absolute;
+   top: 50%;
+   color: black;
+   font-size: var(--mobile-title)
+   
+}
+
+.header__cart {
+   position: absolute;
+   top: 50%;
+   left: 15%;
+   color: black;
+   font-size: var(--mobile-title)
 }
 
 .header__social-container {

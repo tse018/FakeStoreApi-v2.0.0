@@ -1,34 +1,22 @@
 <template>
-   <RouterLink
-      :to="{ name: 'cart' }"
-      class="product__cart grid__item"
-      aria-label="go to cart page"
-   >
-      Go to cart
-   </RouterLink>
-
    <div class="product grid" v-if="product">
-      <img
-         :src="product.image"
-         :alt="product.title"
-         class="product__image grid__item"
-      />
+      <img :src="product.image" :alt="product.title" class="product__image grid__item" />
 
       <h2 class="product__title grid__item">
          {{ product.title }}
       </h2>
 
-      <p class="product__description grid__item">
-         {{ information }}
+      <div class="product__description grid__item">
+         <p class="product__desciption--header">
+            {{ information }}
+         </p>
          <br />
-         {{ product.description }}
-      </p>
+         <p class="product__description--content">
+            {{ product.description }}
+         </p>
+      </div>
 
-      <button
-         class="product__add grid__item"
-         @click="addToCart(product)"
-         :aria-label="product.title"
-      >
+      <button class="product__add grid__item" @click="addToCart(product)" :aria-label="product.title">
          Buy for ${{ product.price }}
       </button>
    </div>
@@ -73,23 +61,24 @@ export default {
 </script>
 
 <style>
-.product {
-      margin-top: 50px;
-      grid-template-columns: repeat(12, 1fr);
-   }
+.product__cart {
+   position: absolute;
+   top: 30%;
+}
 
-   .product__image {
+.product__image {
+      margin-top: -40px;
       order: 4;
       grid-column: 6;
       width: 500px;
       height: 500px;
-      margin-top: -100px;
    }
 
    .product__title {
       order: 1;
       grid-column: 6;
-      margin-top: -30px;
+      font-size: var(--desktop-title);
+      margin-top: -20px;
    }
 
    .product__detail {
@@ -103,8 +92,14 @@ export default {
       grid-column: 7 / 11;
    }
 
+   .product__desciption--header {
+      font-size: var(--desktop-title);
+   }
+
    .product__add {
-      grid-column: 3;
+      position: absolute;
+      top: 350px;
+      left: 250px;
       color: black;
       background: white;
       width: 150px;
@@ -112,9 +107,13 @@ export default {
       padding-left: 15px;
    }
 
+   .product__add:hover {
+      background-color: beige;
+   }
+
 
 /* Tablet Screen */
-@media only screen and (max-width: 1201px) {
+@media only screen and (max-width: 1300px) {
    .product {
       margin-top: 50px;
       grid-template-columns: repeat(3, 1fr);
@@ -124,6 +123,7 @@ export default {
       order: 1;
       grid-column: 2;
       margin: -20px;
+      font-size: var(--tablet-title);
    }
 
    .product__image {
@@ -140,10 +140,12 @@ export default {
       margin: -40px 20px 0 0;
    }
 
+   .product__desciption--header {
+      font-size: var(--tablet-title);
+   }
+
    .product__add {
-      position: absolute;
-      left: 15%;
-      top: 40%;
+      top: 50%;
    }
 }
 
@@ -154,29 +156,65 @@ export default {
       grid-template-columns: repeat(1, 1fr);
    }
 
-   .product__title {
-      order: 1;
-      margin: -20px;
-   }
-
    .product__image {
-      order: 2;
       width: 300px;
-      margin-left: 80px;
+      grid-column: 1;
+      margin-left: 200px;
       height: 300px;
    }
 
-   .product__description {
-      order: 3;
+   .product__title {
       grid-column: 1;
-      grid-row: 1;
+      margin: -20px;
+      font-size: var(--mobile-title);
+   }
 
+   .product__description {
+      order: 2;
+      grid-column: 1;
+   }
+
+   .product__desciption--header {
+      font-size: var(--mobile-title);
    }
 
    .product__add {
-      order: 5;
-      grid-column: 1;
+      margin: 5% 0 0 25%;
+      color: black;
+      background: white;
+      width: 150px;
+      border-radius: 40px;
+      padding-left: 15px;
+   }
+}
 
+/* Mopbile */
+@media only screen and (max-width: 600px) {
+   .product {
+      margin-top: 50px;
+      grid-template-columns: repeat(1, 1fr);
+   }
+
+   .product__image {
+      position: relative;
+      right: 100px;
+      width: 300px;
+      height: 300px;
+   }
+
+   .product__title {
+      grid-column: 1;
+      margin: -20px;
+      font-size: var(--mobile-title);
+   }
+
+   .product__description {
+      order: 2;
+      grid-column: 1;
+   }
+   
+   .product__add {
+      margin: 10%;
       color: black;
       background: white;
       width: 150px;
