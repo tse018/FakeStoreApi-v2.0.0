@@ -53,6 +53,7 @@ export default {
          this.product = result;
       },
 
+      // @click on add button will trigger and run addProuctToCart function from Vuex (mutation)
       addToCart(product) {
          this.$store.commit("addProductToCart", product);
       },

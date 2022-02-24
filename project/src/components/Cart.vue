@@ -47,6 +47,7 @@ export default {
    },
 
    methods: {
+      // @click on remove button will trigger and run removeProduct function from Vuex (mutation)
       removeItem(itemIndex) {
          this.$store.commit("removeProduct", itemIndex);
       },
