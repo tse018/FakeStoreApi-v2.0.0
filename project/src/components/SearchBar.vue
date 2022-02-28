@@ -1,8 +1,7 @@
 <template>
-<div class="grid__item">
+<nav class="grid__item">
    <input type="text" v-model="input" name="searchbar" class="header__input" />
-</div>
-   
+</nav>
 </template>
 
 <script>

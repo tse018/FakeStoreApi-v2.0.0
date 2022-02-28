@@ -1,6 +1,6 @@
 <template>
-   <div class="cart">
-      <div class="cart__head grid">
+   <main class="cart">
+      <nav class="cart__head grid">
          <RouterLink :to="{ name: 'home' }" class="cart__home grid__item">
             Continue Shopping
          </RouterLink> 
@@ -12,9 +12,9 @@
          <p class="cart__checkout grid__item">
             Checkout
          </p>
-      </div>
+      </nav>
 
-      <div class="cart__container grid" v-for="(item, index) in cartItems">
+      <section class="cart__container grid" v-for="(item, index) in cartItems">
          <img class="cart__image grid__item" :src="item.image" :alt="item.title" />
 
          <div class="cart__information grid__item">
@@ -30,8 +30,8 @@
                Remove this product
             </button>
          </div>
-      </div>
-   </div>
+      </section>
+   </main>
 </template>
 
 <script>

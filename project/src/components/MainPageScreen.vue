@@ -1,11 +1,14 @@
 <template>
-   <div class="products grid">
-      <div v-for="product in products" :key="product.id" class="products__container grid__item">
+   <main class="products grid">
+      <section v-for="product in products" :key="product.id" class="products__container grid__item">
          <RouterLink :to="{name: 'product', params: { id: product.id }}" :aria-label="product.title">
             <img :src="product.image" :alt="product.title" class="products__image" />
+            <h1 class="products__title">
+               {{ product.title }}
+            </h1>
          </RouterLink>
-      </div>
-   </div>
+      </section>
+   </main>
 </template>
 
 <script>

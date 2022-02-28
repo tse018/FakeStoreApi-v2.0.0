@@ -22,7 +22,6 @@
          Go to cart
       </RouterLink>
 
-
       <SearchBar v-if="searchField" class="header__search-container grid__item" />
 
       <Icons :icon="'searchBar'" @searchBar="searchMenu" class="header__search" />
@@ -129,7 +128,6 @@ export default {
    top: 50%;
    color: black;
    font-size: var(--mobile-title)
-   
 }
 
 .header__cart {

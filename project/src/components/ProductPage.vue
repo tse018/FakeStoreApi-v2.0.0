@@ -1,5 +1,5 @@
 <template>
-   <div class="product grid" v-if="product">
+   <main class="product grid" v-if="product">
       <img :src="product.image" :alt="product.title" class="product__image grid__item" />
 
       <h2 class="product__title grid__item">
@@ -16,10 +16,10 @@
          </p>
       </div>
 
-      <button class="product__add grid__item" @click="addToCart(product)" :aria-label="product.title">
+      <button class="product__add grid__item" @click="addToCart(product)">
          Buy for ${{ product.price }}
       </button>
-   </div>
+   </main>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
    methods: {
       async fetchProductApi() {
          // litteral string the url endpoint to match params id from routes
-         const url = `https://fakestoreapi.com/products/${this.id}`; //
+         const url = `https://fakestoreapi.com/products/${this.id}`; // 
          const response = await fetch(url);
          const result = await response.json();
 

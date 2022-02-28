@@ -1,27 +1,31 @@
 <template>
-   <div class="toggle-warpper">
+   <button class="toggle-warpper">
       <label class="toggle">
-         <input type="checkbox" :checked="mode === 'dark' ? 'checked' : false" @change="$emit('toggle')" />
+         <input class="toggle__input" type="checkbox" :checked="mode === 'dark' ? 'checked' : false" @change="$emit('toggle')" />
          <span class="toggler round"></span>
       </label>
-   </div>
+   </button>
 </template>
 
 <script>
 export default {
-   props: ['mode'],
+   props: {
+      mode: {
+         type: String, 
+      },
+   },
 };
 </script>
 
 <style>
 .toggle {
    position: relative;
-   display: inline-block;
+   display: flex;
    width: 60px;
    height: 34px;
 }
 
-.toggle input {
+.toggle__input {
    opacity: 0;
    width: 0;
    height: 0;
@@ -60,14 +64,15 @@ export default {
    transition: 0.4s;
 }
 
-input:checked + .toggler {
+.toggle__input:checked + .toggler {
    background: red;
 }
-input:focus + toggler {
+
+.toggle__input:focus + .toggler {
    box-shadow: 0 0 20px red;
 }
 
-input:checked + .toggler:before {
+.toggle__input:checked + .toggler:before {
    transform: translateX(26px);
 }
 
