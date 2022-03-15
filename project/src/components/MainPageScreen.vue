@@ -1,13 +1,28 @@
 <template>
    <main class="products grid">
-      <section v-for="product in products" :key="product.id" class="products__container grid__item">
-         <RouterLink :to="{name: 'product', params: { id: product.id }}" :aria-label="product.title">
-            <img :src="product.image" :alt="product.title" class="products__image" />
+      <section
+         v-for="product in products"
+         :key="product.id"
+         class="products__container grid__item"
+      >
+         <RouterLink
+            :to="{ name: 'product', params: { id: product.id } }"
+            :aria-label="product.title"
+         >
+            <img
+               :src="product.image"
+               :alt="product.title"
+               class="products__image"
+            />
             <h1 class="products__title">
                {{ product.title }}
             </h1>
          </RouterLink>
       </section>
+
+      <p v-if="error">
+         {{ error }}
+      </p>
    </main>
 </template>
 
@@ -15,8 +30,9 @@
 export default {
    data() {
       return {
-         // api products in this array  
+         // api products in this array
          products: [],
+         error: "",
       };
    },
 
@@ -27,13 +43,34 @@ export default {
 
    methods: {
       async fetchStoreApi() {
-         const url = 'https://fakestoreapi.com/products/';
+         const url = "https://fakestoreapi.com/products/";
          const response = await fetch(url);
-         // fetch api data into json
-         const results = await response.json();
+         try {
+            await this.handleResponse(response);
+         } catch (error) {
+            this.error = error.message;
+         }
 
          //products will get the products data as json
          this.products = results;
+      },
+
+      async handleResponse(response) {
+         if (response.status >= 200 && response.status < 300) {
+            // fetch api data into json
+            const results = await response.json();
+         } else {
+            if (response.status === 404) {
+               throw new Error('Feil med fetching av URL!');
+            }
+            if (response.status === 401) {
+               throw new Error('Ikke authorisert!');
+            }
+            if (response.status > 500) {
+               throw new Error('Server ikke funnet')
+            }
+            throw new Error('Generetisk feil!');
+         }
       },
    },
 };
@@ -55,7 +92,8 @@ export default {
    padding: 50px;
 }
 
-.products__image, img {
+.products__image,
+img {
    width: 200px;
    height: 300px;
 }
@@ -75,8 +113,4 @@ export default {
       grid-template-columns: repeat(1, 1fr);
    }
 }
-
-
-
 </style>
-
