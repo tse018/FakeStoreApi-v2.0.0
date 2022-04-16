@@ -50,15 +50,14 @@ export default {
          } catch (error) {
             this.error = error.message;
          }
-
-         //products will get the products data as json
-         this.products = results;
       },
 
       async handleResponse(response) {
          if (response.status >= 200 && response.status < 300) {
             // fetch api data into json
             const results = await response.json();
+            this.products = results;
+            console.log(this.products)
          } else {
             if (response.status === 404) {
                throw new Error('Feil med fetching av URL!');
