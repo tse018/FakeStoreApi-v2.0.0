@@ -13,51 +13,19 @@
             {{ title }}
          </h1>
       </RouterLink>
-
-      <RouterLink :to="{ name: 'home' }" class="header__home grid__item" aria-label="go to cart page">
-         Go back to Home
-      </RouterLink>
-
+      
       <RouterLink :to="{ name: 'cart' }" class="header__cart grid__item" aria-label="go to cart page">
          Go to cart
       </RouterLink>
-
-      <SearchBar v-if="searchField" class="header__search-container grid__item" />
-
-      <Icons :icon="'searchBar'" @searchBar="searchMenu" class="header__search" />
-
-      <ul class="header__social-container grid__item">
-         <li class="header__social-element">
-            <Icons :icon="'facebook'" />
-         </li>
-
-         <li class="header__social-element">
-            <Icons :icon="'mail'" />
-         </li>
-
-         <li class="header__social-element">
-            <Icons :icon="'twitter'" />
-         </li>
-      </ul>
-
-      <div class="header__toggle-container grid__item">
-         <ToggleMode :mode="mode" @toggle="$emit('toggle')" class="header__toggle" />
-      </div>
    </header>
 </template>
 
 <script>
-import SearchBar from "../components/SearchBar.vue";
-import Cart from "./Cart.vue";
 import Icons from "../components/Icons.vue";
-import ToggleMode from "../components/ToggleMode.vue";
 
 export default {
    components: {
-      Cart,
-      SearchBar,
       Icons,
-      ToggleMode,
    },
 
    data() {

@@ -1,38 +1,16 @@
 <template>
-   <div :class="mode">
-      <Header :mode="mode" @toggle="toggle" />
-      <Announcement />
-   </div>
-
-   <RouterView />
+   <Header />
+   <RouterView  />
 </template>
 
 <script>
 import Header from "../components/Header.vue";
 import Announcement from "../components/Announcement.vue";
-import ToggleMode from "../components/ToggleMode.vue";
 
 export default {
-   data() {
-      return {
-         mode: "ligth",
-      };
-   },
-
    components: {
       Header,
       Announcement,
-      ToggleMode
-   },
-
-   methods: {
-      toggle() {
-         if (this.mode === "ligth") {
-            this.mode = "dark";
-         } else {
-            this.mode = "ligth";
-         }
-      },
    },
 };
 </script>
