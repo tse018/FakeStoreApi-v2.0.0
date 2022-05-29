@@ -1,56 +1,75 @@
 <template>
-   <main class="product grid" v-if="product">
-      <img :src="product.image" :alt="product.title" class="product__image grid__item" />
+   <template v-if="loading"> 
+      loading...
+   </template>
 
-      <h2 class="product__title grid__item">
-         {{ product.title }}
-      </h2>
-
-      <div class="product__description grid__item">
-         <p class="product__desciption--header">
-            {{ information }}
-         </p>
-         <br />
-         <p class="product__description--content">
-            {{ product.description }}
-         </p>
-      </div>
-
-      <button class="product__add grid__item" @click="addToCart(product)">
-         Buy for ${{ product.price }}
-      </button>
-   </main>
+   <template v-else>
+      {{ data }}
+   </template>
 </template>
 
 <script>
 export default {
    data() {
       return {
-         // fetching items from API in here
-         product: [],
-         information: "Product information",
+         data: [],
+         error: "",
+         loading: true,
       };
+   },
+
+   props: {
+      id: {
+         type: String
+      }
    },
 
    created() {
       // before vue creating want to fetch the api so it will be shown
-      this.fetchProductApi();
+      this.fetchProducts();
+      //this.$route.path.replace("%20", "-")
+   },
+
+   mounted() {
+      this.$route.params.id.replace("%20", "-")
    },
 
    methods: {
-      async fetchProductApi() {
-         // litteral string the url endpoint to match params id from routes
-         const url = `https://fakestoreapi.com/products/${this.$route.params.id}`; // 
+      async fetchProducts() {
+         const url = `https://dummyjson.com/products`;
          const response = await fetch(url);
-         const result = await response.json();
+         try {
+            await this.handleResponse(response);
+         } catch (error) {
+            this.error = error.message;
+         }
 
-         // storing all the api data as json in empty array
-         this.product = result;
+         const changeUrl = this.data.filter((item) => {
+               return item.title.includes(
+                  this.$route.params.id
+               )
+         });
+
+         this.data = changeUrl;
       },
 
-      // @click on add button will trigger and run addProuctToCart function from Vuex (mutation)
-      addToCart(product) {
-         this.$store.commit("addProductToCart", product);
+      async handleResponse(response) {
+         if (response.status >= 200 && response.status < 300) {
+            // fetch api data into json
+            const { products }  = await response.json();
+            this.data = products;
+            this.loading = false;
+         } else {
+            if (response.status === 404) {
+               throw new Error("Feil med fetching av URL!");
+            }
+            if (response.status === 401) {
+               throw new Error("Ikke authorisert!");
+            }
+            if (response.status > 500) {
+               throw new Error("Server ikke funnet");
+            }
+         }
       },
    },
 };

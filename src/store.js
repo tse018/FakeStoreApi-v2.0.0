@@ -4,6 +4,6 @@ import announcement from './modules/announcement.js';
 export default {
    modules: {
       cart,
-      announcement
+      announcement,
    }
 };
