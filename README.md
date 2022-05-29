@@ -1,4 +1,4 @@
-# REST API Project
+# FAKE Store API v2.0.0
 Fake Store API
 
 Requirements: 
