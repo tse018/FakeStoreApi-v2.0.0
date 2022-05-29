@@ -1,4 +1,4 @@
-# Frontend Case Task
+# REST API Project
 Fake Store API
 
 Requirements: 
