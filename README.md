@@ -1,5 +1,5 @@
 # Frontend Case Task
-Technical Interview Task
+Fake Store API
 
 Requirements: 
   - Page 1:
