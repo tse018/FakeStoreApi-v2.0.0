@@ -29,7 +29,7 @@
                </div>
             </RouterLink>
 
-            <button>
+            <button @click="addToCart(product)">
                Add To Cart
             </button>
          </section>
@@ -72,16 +72,20 @@ export default {
             this.loading = false;
          } else {
             if (response.status === 404) {
-               throw new Error("Feil med fetching av URL!");
+               throw new Error("Fail Fetching with this URL!");
             }
             if (response.status === 401) {
-               throw new Error("Ikke authorisert!");
+               throw new Error("Not Authorized!");
             }
             if (response.status > 500) {
-               throw new Error("Server ikke funnet");
+               throw new Error("Server not Found!");
             }
          }
       },
+
+      addToCart(product) {
+         this.$store.commit("addProductToCart", product);
+      }
    },
 };
 </script>
@@ -118,19 +122,19 @@ export default {
    color: black;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 601px) and (max-width: 1200px) {
    .products {
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       width: 100vw;
       gap: 20px;
    }
 }
 
-@media screen and (min-width: 601px) and (max-width: 1200px) {
+@media screen and (max-width: 600px) {
    .products {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       width: 100vw;
       gap: 20px;
    }
