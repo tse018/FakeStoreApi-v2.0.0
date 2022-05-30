@@ -5,11 +5,7 @@
       <main class="products">
          <section v-for="product in items" class="products__container">
             <RouterLink :to="{ name: 'product', params: { id: product.title } }">
-               <img
-                  :src="product.images[0]"
-                  :alt="product.title"
-                  class="products__image"
-               />
+               <img :src="product.images[0]" :alt="product.title" class="products__image" />
                <div class="products__details">
                   <h2 class="products__title">
                      {{ product.title }}
@@ -20,7 +16,7 @@
                   </p>
 
                   <p class="products.discount">
-                     Save {{ product.discountPercentage }}
+                     Save {{ product.discountPercentage }}%
                   </p>
 
                   <p class="products.stock">
@@ -30,12 +26,12 @@
                   <p class="products.price">
                      Price: {{ product.price }}.-
                   </p>
-
-                  <button>
-                     add To Cart
-                  </button>
                </div>
             </RouterLink>
+
+            <button>
+               Add To Cart
+            </button>
          </section>
       </main>
    </template>
@@ -122,5 +118,21 @@ export default {
    color: black;
 }
 
+@media screen and (max-width: 600px) {
+   .products {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      width: 100vw;
+      gap: 20px;
+   }
+}
 
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+   .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100vw;
+      gap: 20px;
+   }
+}
 </style>

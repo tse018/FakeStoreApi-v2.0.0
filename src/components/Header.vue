@@ -1,21 +1,11 @@
 <template>
-   <header class="header grid">
-      <RouterLink :to="{ name: 'cart' }">
-         <Icons :icon="'cart'" class="header__menu grid__item" />
-
-         <span class="header__item-count">
-            {{ itemCount }}
-         </span>
-      </RouterLink>
-
-      <RouterLink :to="{ name: 'home' }" class="header__title-container grid__item">
-         <h1 class="header__title ">
-            {{ title }}
-         </h1>
+   <header class="header">
+      <RouterLink :to="{ name: 'home' }" class="header__title">
+         Fake Store API
       </RouterLink>
       
-      <RouterLink :to="{ name: 'cart' }" class="header__cart grid__item" aria-label="go to cart page">
-         Go to cart
+      <RouterLink :to="{ name: 'cart' }" class="header__cart" aria-label="click to cart page">
+         <Icons :icon="'cart'" class="header__menu" />
       </RouterLink>
    </header>
 </template>
@@ -28,27 +18,9 @@ export default {
       Icons,
    },
 
-   data() {
-      return {
-         title: "Fake Store API",
-         menuBar: false,
-         searchField: false,
-      };
-   },
-
-   computed: {
-      itemCount() {
-         return this.$store.getters.getItemCount;
-      },
-   },
-
    methods: {
       toggleDetails() {
          this.menuBar = !this.menuBar;
-      },
-
-      searchMenu() {
-         this.searchField = !this.searchField;
       },
    },
 };
@@ -56,78 +28,23 @@ export default {
 
 <style>
 .header {
-   position: sticky;
-   top: 10px;
-}
-
-.header__menu {
-   margin-top: 13px;
-   cursor: pointer;
-}
-
-.header__item-count {
-   position: absolute;
-   top: 3;
-   left: 70;
-   font-size: 40px;
-   color: red;
-}
-
-.header__title-container {
-   grid-column: span 3;
-   text-decoration-line: none;
-}
-
-.dark .header__title {
-   font-size: 40px;
-   font-style: italic;
-   color: white;
+   border-bottom: 2px solid gainsboro;
+   width: 100vw;
+   display: flex;
+   justify-content: space-between;
 }
 
 .header__title {
-   font-size: 40px;
+   font-size: 28px;
+   padding: 20px;
+   margin-left: 50px;
+   text-decoration: none;
+   color: black;
    font-style: italic;
-   color: black;
-}
-
-
-.header__home {
-   position: absolute;
-   top: 50%;
-   color: black;
-   font-size: var(--mobile-title)
 }
 
 .header__cart {
-   position: absolute;
-   top: 50%;
-   left: 15%;
-   color: black;
-   font-size: var(--mobile-title)
+   padding: 20px;
 }
 
-.header__social-container {
-   grid-column: 11;
-   margin-top: 13px;
-}
-
-.header__social-element {
-   cursor: pointer;
-}
-
-.header__search {
-   grid-column: 8;
-   cursor: pointer;
-   margin-top: 40px;
-}
-
-.header__search-container {
-   grid-column: 5 / 8;
-   margin-top: 50px;
-}
-
-.header__toggle-container {
-   grid-column: 12;
-   margin-top: 13px;
-}
 </style>
