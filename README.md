@@ -20,4 +20,4 @@ Requirements for frontend case task:
   - Page 3:
     Make a Cart Page
     
-    Tech Stack: Vue, Vuex, Vue Router, REST-API
+Tech Stack: Vue, Vuex, Vue Router, REST-API
