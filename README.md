@@ -1,5 +1,12 @@
 # FAKE Store API v2.0.0
-Changed from Fake Store API REST API to dummyjson REST-API because lack of performance & loading time took forever to fetch data
+NOTE: Changed from Fake Store API REST API to dummyjson REST-API because lack of performance & loading time took forever to fetch data
+
+This is a super simple E-commerce application showcasing 
+- random products rendered from REST-API
+- able to navigate to product page dynamically
+- add product to cart
+- remove product from cart
+- total items in the cart
 
 Requirements for frontend case task: 
   - Page 1:
