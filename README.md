@@ -1,5 +1,5 @@
 # FAKE Store API v2.0.0
-Changes from Fake Store API REST API to dummyjson REST-API because lack of performance & loading time took forever to fetch data
+Changed from Fake Store API REST API to dummyjson REST-API because lack of performance & loading time took forever to fetch data
 
 Requirements: 
   - Page 1:
