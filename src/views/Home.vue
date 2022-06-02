@@ -45,6 +45,7 @@ export default {
          items: [],
          loading: true,
          error: "",
+         sort: [],
       };
    },
 

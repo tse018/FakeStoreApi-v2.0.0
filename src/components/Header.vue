@@ -4,9 +4,10 @@
          Fake Store API
       </RouterLink>
       
-      <RouterLink :to="{ name: 'cart' }" class="header__cart" aria-label="click to cart page">
-         <Icons :icon="'cart'" class="header__menu" />
-      </RouterLink>
+      <span class="header__cart">
+         {{ totalCount }}
+         <Icons :icon="'cart'" class="header__menu" /> 
+      </span>
    </header>
 </template>
 
@@ -23,6 +24,12 @@ export default {
          this.menuBar = !this.menuBar;
       },
    },
+
+   computed: {
+      totalCount() {
+         return this.$store.getters.getItemCount;
+      }
+   }
 };
 </script>
 
